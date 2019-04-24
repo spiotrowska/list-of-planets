@@ -1,0 +1,6 @@
+<div class="row mt-3">
+  <form [formGroup]="filterForm" class="form-group m-auto col-md-6">
+    <input type="text" formControlName="phrase" class="form-control" (input)="emitPhrase()"
+      placeholder="Planet name"/>
+  </form>
+</div>

@@ -1,0 +1,32 @@
+@import 'assets/less/mixins.less';
+@import 'assets/less/variables.less';
+
+body {
+  background: url(@background-img-url) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.btn, .form-control, .card {
+  .border-radius(0px);
+}
+
+.planet {
+  cursor: pointer;
+
+  &:hover {
+    color: @blue-color;
+    .box-shadow;
+  }
+}
+
+.card:not(.planet) {
+  .box-shadow;
+}
+
+.text-white {
+  color: white;
+}
+
+.text-blue {
+  color: @blue-color;
+}

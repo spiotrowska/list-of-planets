@@ -1,0 +1,30 @@
+<form [formGroup]="paginationForm" class="form-group row text-right">
+  <div class="col-md-8 row">
+    <label for="pageSize" class="col-10 ml-auto pt-1 text-white">Per page</label>
+    <select id="pageSize" formControlName="pageSize" class="form-control col-2 ml-auto">
+      <!-- <option value="5">5</option> -->
+      <option value="10">10</option>
+      <!-- <option value="25">25</option> -->
+      <!-- <option value="100">100</option> -->
+    </select>
+  </div>
+  <div class="col-md-4 ml-auto">
+    <div class="row">
+      <button class="btn btn-info btn-sm mr-1" (click)="goToFirstPage()" [ngClass]="{'disabled': pageNumber <= 1}">
+        <i class="fa fa-step-backward"></i>
+      </button>
+      <button class="btn btn-info btn-sm mr-1" (click)="goToPreviousPage()" [ngClass]="{'disabled': pageNumber <= 1}">
+        <i class="fa fa-caret-left fa-2x"></i>
+      </button>
+      <input formControlName="pageNumber" min="1" [max]="maxPageNumber" class="form-control col-4"
+        [ngClass]="{'is-invalid': paginationForm.get('pageNumber').errors}" [value]="pageNumber" type="number"/>
+      <span class="m-1 text-white">/{{ maxPageNumber }}</span>
+      <button class="btn btn-info btn-sm mr-1" (click)="goToNextPage()" [ngClass]="{'disabled': pageNumber >= maxPageNumber}">
+        <i class="fa fa-caret-right fa-2x"></i>
+      </button>
+      <button class="btn btn-info btn-sm" (click)="goToLastPage()" [ngClass]="{'disabled': pageNumber >= maxPageNumber}">
+        <i class="fa fa-step-forward"></i>
+      </button>
+    </div>
+  </div>
+</form>

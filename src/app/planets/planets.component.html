@@ -1,0 +1,20 @@
+<div *ngIf="planets; else loading">
+  <app-filter (phraseEmitter)="getPlanetsByPhrase($event)"></app-filter>
+  <div class="row p-3">
+    <app-planet-view class="col-sm-4 col-md-3" *ngFor="let planet of planets.results" [planet]="planet">
+    </app-planet-view>
+  </div>
+  <div class="row">
+    <div class="col-md-2 ml-3 text-white">Number of planets: <b>{{ planets.count }}</b></div>
+    <div class="col-md-9">
+      <app-pagination [maxPageNumber]="maxPageNumber" (pageNumberEmitter)="getPlanetsByPageNumber($event)"
+        (pageSizeEmitter)="getPlanetsByPageSize($event)"></app-pagination>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="row m-auto">
+    <h2 class="col text-white">Loading...</h2>
+  </div>
+</ng-template>

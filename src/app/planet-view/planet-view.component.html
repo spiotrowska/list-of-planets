@@ -1,0 +1,18 @@
+<div class="card m-1 planet" *ngIf="planet" (click)="redirectToPlanetDetails(planet.url)">
+  <div class="card-body text-center">
+    <h4>{{ planet.name }}</h4><br>
+    <div class="row">
+      <div class="col-md-5 text-right">
+        <i class="fas fa-arrows-alt-h"></i> {{ planet.diameter }}
+      </div>
+      <div class="col-md-7">
+        <i class="fas fa-user-friends"></i> {{ planet.population }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <i class="fas fa-cloud-sun"></i> {{ planet.climate }}
+      </div>
+    </div>
+  </div>
+</div>
