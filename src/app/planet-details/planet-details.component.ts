@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
   providers: [PlanetsService, FilmsService, PeopleService]
 })
 export class PlanetDetailsComponent implements OnInit {
-  protected planet: PlanetModel;
+  planet: PlanetModel;
   protected residentsNames = [];
   protected filmsTitles = [];
 
@@ -29,7 +29,7 @@ export class PlanetDetailsComponent implements OnInit {
     this.getPlanetById();
   }
 
-  protected goBack() {
+  goBack() {
     this.location.back();
   }
 

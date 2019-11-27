@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 })
 export class FilterComponent implements OnInit {
   @Output() phraseEmitter: EventEmitter<string> = new EventEmitter<string>();
-  protected filterForm: FormGroup;
+  filterForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
@@ -15,7 +15,7 @@ export class FilterComponent implements OnInit {
     this.buildForm();
   }
 
-  protected emitPhrase() {
+  emitPhrase() {
     const phrase = this.filterForm.get('phrase').value;
     this.phraseEmitter.emit(phrase);
   }

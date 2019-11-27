@@ -9,9 +9,9 @@ export class PaginationComponent implements OnInit {
   @Input() maxPageNumber: number;
   @Output() pageNumberEmitter: EventEmitter<number> = new EventEmitter<number>();
   @Output() pageSizeEmitter: EventEmitter<number> = new EventEmitter<number>();
-  protected paginationForm: FormGroup;
-  protected pageNumber = 1;
-  protected pageSize = 10;
+  paginationForm: FormGroup;
+  pageNumber = 1;
+  pageSize = 10;
 
   constructor(private fb: FormBuilder) { }
 
@@ -19,26 +19,26 @@ export class PaginationComponent implements OnInit {
     this.buildForm();
   }
 
-  protected goToNextPage() {
+  goToNextPage() {
     if (this.pageNumber < this.maxPageNumber) {
       this.pageNumber = this.pageNumber + 1;
       this.pageNumberEmitter.emit(this.pageNumber);
     }
   }
 
-  protected goToPreviousPage() {
+  goToPreviousPage() {
     if (this.pageNumber > 1) {
       this.pageNumber = this.pageNumber - 1;
       this.pageNumberEmitter.emit(this.pageNumber);
     }
   }
 
-  protected goToLastPage() {
+  goToLastPage() {
     this.pageNumber = this.maxPageNumber;
     this.pageNumberEmitter.emit(this.pageNumber);
   }
 
-  protected goToFirstPage() {
+  goToFirstPage() {
     this.pageNumber = 1;
     this.pageNumberEmitter.emit(this.pageNumber);
   }

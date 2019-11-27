@@ -8,7 +8,7 @@ import { PlanetsService } from '../_services/planets.service';
   providers: [PlanetsService]
 })
 export class PlanetsComponent implements OnInit {
-  protected planets: PlanetsModel;
+  planets: PlanetsModel;
   protected search: string;
   protected pageNumber: number;
   protected pageSize = 10;
