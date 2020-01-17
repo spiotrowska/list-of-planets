@@ -1,0 +1,82 @@
+<button class="btn btn-info m-4" (click)="goBack()" placement="bottom" ngbTooltip="Back">
+  <i class="fa fa-arrow-left"></i>
+</button>
+<div class="card col-md-6 m-auto" *ngIf="film; else loading">
+  <div class="card-body text-center">
+    <h4 class="text-blue">{{ film.title }}</h4><br>
+    <div class="row">
+      <div class="col-md-6 md-text-right "><b>Director:</b></div>
+      <div class="col-md-6 md-text-left">{{ film.director }}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 md-text-right "><b>Producer:</b></div>
+      <div class="col-md-6 md-text-left">{{ film.producer }}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 md-text-right "><b>Release date:</b></div>
+      <div class="col-md-6 md-text-left">{{ film.release_date }}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 md-text-right "><b>Opening crawl:</b></div>
+      <div class="col-md-6 md-text-left">{{ film.opening_crawl }}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 md-text-right "><b>Characters:</b></div>
+      <div class="col-md-6 md-text-left">
+        {{ film.characters.length }}
+        <button class="btn btn-sm btn-outline-info m-1" (click)="openCharactersModal()">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 md-text-right "><b>Planets:</b></div>
+      <div class="col-md-6 md-text-left">
+        {{ film.planets.length }}
+        <button class="btn btn-sm btn-outline-info m-1" (click)="openPlanetsModal()">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 md-text-right "><b>Starships:</b></div>
+      <div class="col-md-6 md-text-left">
+        {{ film.starships.length }}
+        <button class="btn btn-sm btn-outline-info m-1" (click)="openStarshipsModal()">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 md-text-right "><b>Vehicles:</b></div>
+      <div class="col-md-6 md-text-left">
+        {{ film.vehicles.length }}
+        <button class="btn btn-sm btn-outline-info m-1" (click)="opensVehiclesModal()">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 md-text-right "><b>Species:</b></div>
+      <div class="col-md-6 md-text-left">
+        {{ film.species.length }}
+        <button class="btn btn-sm btn-outline-info m-1" (click)="openSpeciesModal()">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 md-text-right"><b>Created:</b></div>
+      <div class="col-md-6 md-text-left">{{ film.created | date:'d.MM.yyyy, hh:mm' }}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 md-text-right"><b>Edited:</b></div>
+      <div class="col-md-6 md-text-left">{{ film.edited | date:'d.MM.yyyy, hh:mm' }}</div>
+    </div>
+  </div>
+</div>
+<br>
+
+<ng-template #loading>
+  <app-spinner></app-spinner>
+</ng-template>

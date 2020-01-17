@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,6 +11,9 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { PlanetDetailsComponent } from './planet-details/planet-details.component';
 import { PlanetViewComponent } from './planet-view/planet-view.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FilmViewComponent } from './film-view/film-view.component';
+import { NamesModalComponent } from './names-modal/names-modal.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FilterComponent,
     PaginationComponent,
     PlanetDetailsComponent,
-    PlanetViewComponent
+    PlanetViewComponent,
+    FilmViewComponent,
+    NamesModalComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +35,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule
   ],
   providers: [],
+  entryComponents: [
+    NamesModalComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
