@@ -43,13 +43,19 @@
     <div class="row">
       <div class="col-md-6 md-text-right"><b>Residents:</b></div>
       <div class="col-md-6 md-text-left">
-        <span *ngFor="let residentsName of residentsNames">{{ residentsName }}<br></span>
+      <div *ngIf="residentsNames.length; else loadingSm">
+          <span *ngFor="let residentsName of residentsNames">{{ residentsName }}<br></span>
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6 md-text-right"><b>Films:</b></div>
-      <div class="col-md-6 md-text-left">
-        <span *ngFor="let filmsTitle of filmsTitles">{{ filmsTitle }}<br></span>
+      <div class="col-md-6 md-text-left text-blue">
+        <div *ngIf="films.length; else loadingSm">
+          <span *ngFor="let film of films">
+            <div (click)="redirectToFilmView(film.url)" class="cursor-pointer">{{ film.title }}</div>
+          </span>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -65,7 +71,9 @@
 <br>
 
 <ng-template #loading>
-    <div class="row m-auto">
-      <h2 class="col text-white">Loading...</h2>
-    </div>
-  </ng-template>
+  <app-spinner></app-spinner>
+</ng-template>
+
+<ng-template #loadingSm>
+  <app-spinner size="sm" [withTitle]="false"></app-spinner>
+</ng-template>

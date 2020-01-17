@@ -5,7 +5,7 @@ import { FilmsService } from './../_services/films.service';
 import { PlanetsService } from '../_services/planets.service';
 import { PlanetModel } from '../_models/planet.model';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 @Component({
@@ -16,14 +16,15 @@ import { Location } from '@angular/common';
 export class PlanetDetailsComponent implements OnInit {
   planet: PlanetModel;
   protected residentsNames = [];
-  protected filmsTitles = [];
+  protected films = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private planetsService: PlanetsService,
     private filmsService: FilmsService,
     private peopleService: PeopleService,
-    private location: Location) { }
+    private location: Location,
+    private router: Router) { }
 
   ngOnInit() {
     this.getPlanetById();
@@ -33,12 +34,16 @@ export class PlanetDetailsComponent implements OnInit {
     this.location.back();
   }
 
+  protected redirectToFilmView(url: string) {
+    this.router.navigate([`films/${url.substr(url.length - 2)}`]);
+  }
+
   private getPlanetById() {
     const planetId = this.getPlanetIdFromUrl();
     this.planetsService.getPlanet(planetId).subscribe((planet: PlanetModel) => {
       this.planet = planet;
       this.getResidentsNames();
-      this.getFilmsTitles();
+      this.getFilms();
     });
   }
 
@@ -47,9 +52,9 @@ export class PlanetDetailsComponent implements OnInit {
       .subscribe((resident: PersonModel) => this.residentsNames.push(resident.name)));
   }
 
-  private getFilmsTitles() {
+  private getFilms() {
     this.planet.films.forEach(url => this.filmsService.getFilm(url)
-      .subscribe((film: FilmModel) => this.filmsTitles.push(film.title)));
+      .subscribe((film: FilmModel) => this.films.push(film)));
   }
 
   private getPlanetIdFromUrl(): string {

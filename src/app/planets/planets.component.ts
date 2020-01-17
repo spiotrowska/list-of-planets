@@ -5,6 +5,7 @@ import { PlanetsService } from '../_services/planets.service';
 @Component({
   selector: 'app-planets',
   templateUrl: './planets.component.html',
+  styleUrls: ['./planets.component.less'],
   providers: [PlanetsService]
 })
 export class PlanetsComponent implements OnInit {
